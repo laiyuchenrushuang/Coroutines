@@ -16,11 +16,11 @@ implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
 
    协程调用，suspend,挂载函数.[ 执行阻塞的顺序执行]
   
-   例子： runblocking{
-        
+   例子： 
+   
+        runblocking{
           AA()
         } 
-        
         suspend AA(){}
         
 （2） CoroutineDispatcher 协程调度器
@@ -40,9 +40,9 @@ implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
    
    例子：
    
-   launch {
+     launch {
    
-   }
+     }
    
   请注意,launch函数是CoroutineScope的方法,如果要调用launch必须要有CoroutineScope对象,上面代码的launch{…} 其实是 this.launch{…},而这个this是runblocking闭包中的CoroutineScope对象如果没有CoroutineScope对象,可以使用GlobalScope.launch{…},GlobalScope是一个全局的CoroutineScope对象
 
@@ -69,11 +69,11 @@ implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
   
   原：
   
-   val deferred1 = async { calculateHardThings(10) }.await()
+    val deferred1 = async { calculateHardThings(10) }.await()
    
   现：
   
-   val result1 = withContext(Dispatchers.Default) { calculateHardThings(10) }
+    val result1 = withContext(Dispatchers.Default) { calculateHardThings(10) }
    
 
 （6） Dispatchers 的类型
